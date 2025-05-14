@@ -6,18 +6,42 @@ funcion1() {
     echo "Función 1 procesos en ejecución: Por implementar"
 }
 
-# Función 2
+
 funcion2() {
-    # FRAN
-    echo "Función 2 ingresar un PID y muestre info del proceso: Por implementar"
+    echo "Función 2: Ingrese el PID del proceso que desea inspeccionar:"
+    read pid
+
+    # Validar que sea un número
+    if [[ "$pid" =~ ^[0-9]+$ ]]; then
+        # Obtener información del proceso
+        ps -p "$pid" -o pid,ppid,user,%cpu,%mem,cmd
+    else
+        echo "PID inválido. Debe ser un número."
+    fi
 }
 
 
 # Función 3
 funcion3() {
-   
-    echo "Función 3 enviar una señal por su PID: Por implementar"
+    echo "Función 3: Enviar una señal a un proceso"
+    echo "Ingrese el PID del proceso:"
+    read pid
+
+    # Validar que el PID sea numérico
+    if [[ "$pid" =~ ^[0-9]+$ ]]; then
+        # Mostrar confirmación antes de matar
+        echo "¿Está seguro que desea enviar SIGTERM al proceso $pid? (s/n):"
+        read confirmacion
+        if [[ "$confirmacion" == "s" || "$confirmacion" == "S" ]]; then
+            kill -15 "$pid" && echo "Proceso $pid terminado con SIGTERM."
+        else
+            echo "Operación cancelada."
+        fi
+    else
+        echo "PID inválido. Debe ser un número."
+    fi
 }
+
 
 function ejecutar_comandos(){
    echo "Seleccione una opción: (ps, top, pgrep, kill)"
