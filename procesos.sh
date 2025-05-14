@@ -111,3 +111,39 @@ function crear_archivo() {
     fi
 }
 
+#Función 6: Crear un directorio y elegir su nombre
+function crear_directorio() {
+    while true; do
+        echo "Ingrese el nombre del directorio:"
+        read nombre_directorio
+
+        # Eliminar espacios al principio y al final
+        nombre_directorio="${nombre_directorio#"${nombre_directorio%%[![:space:]]*}"}" 
+        nombre_directorio="${nombre_directorio%"${nombre_directorio##*[![:space:]]}"}" 
+
+        # Validación: el nombre no puede estar vacío o ser menor de 3 caracteres
+        if [[ -z "$nombre_directorio" || ${#nombre_directorio} -lt 3 ]]; then 
+            echo -e "\033[33mEl nombre del directorio no puede estar vacío ni tener menos de 3 letras. Por favor, elija otro nombre.\033[0m"
+            continue
+        fi
+       
+        # Validación: el nombre solo puede contener letras, números, guiones y guiones bajos
+        if [[ "$nombre_directorio" =~ [^a-zA-Z0-9_-] ]]; then
+            echo -e "\033[33mEl nombre del directorio solo puede contener letras, números, guiones y guiones bajos. Por favor, elija otro nombre.\033[0m"
+            continue  
+        fi
+        
+        # Validación: si el directorio ya existe
+        if [[ -e "$nombre_directorio" ]]; then
+            echo -e "\033[31mEl directorio '$nombre_directorio' ya existe. No se creó uno nuevo.\033[0m"
+            return 
+        fi
+        
+        # Si pasa todas las validaciones, se crea el directorio
+        echo "Nombre del directorio guardado correctamente: $nombre_directorio"
+        mkdir "$nombre_directorio"
+        echo -e "\033[32mDirectorio '$nombre_directorio' creado exitosamente.\033[0m"
+        break
+    done
+}
+
