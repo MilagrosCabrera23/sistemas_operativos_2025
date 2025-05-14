@@ -6,30 +6,22 @@ funcion1() {
     echo "Función 1 procesos en ejecución: Por implementar"
 }
 
-
-funcion2() {
-    echo "Función 2: Ingrese el PID del proceso que desea inspeccionar:"
+proceso_informacion() {
+    echo "Ingrese el PID del proceso que desea inspeccionar:"
     read pid
 
-    # Validar que sea un número
-    if [[ "$pid" =~ ^[0-9]+$ ]]; then
-        # Obtener información del proceso
+    if [[ "$pid" =~ ^[0-9]+$ ]]; then        
         ps -p "$pid" -o pid,ppid,user,%cpu,%mem,cmd
     else
         echo "PID inválido. Debe ser un número."
     fi
 }
 
-
-# Función 3
-funcion3() {
-    echo "Función 3: Enviar una señal a un proceso"
-    echo "Ingrese el PID del proceso:"
+proceso_finalizar() {
+    echo "Ingrese el PID del proceso que desea finalizar:"
     read pid
 
-    # Validar que el PID sea numérico
     if [[ "$pid" =~ ^[0-9]+$ ]]; then
-        # Mostrar confirmación antes de matar
         echo "¿Está seguro que desea enviar SIGTERM al proceso $pid? (s/n):"
         read confirmacion
         if [[ "$confirmacion" == "s" || "$confirmacion" == "S" ]]; then
@@ -42,31 +34,29 @@ funcion3() {
     fi
 }
 
-
-function ejecutar_comandos(){
+procesos_comandos_habituales(){
    echo "Seleccione una opción: (ps, top, pgrep, kill)"
-    read comando
+    read com
 
-    comando=$(echo "$comando" | tr '[:upper:]' '[:lower:]')
+    com=$(echo "$com" | tr '[:upper:]' '[:lower:]')
 
-    if [[ "$comando" == "ps" ]]; then
+    if [[ "$com" == "ps" ]]; then
         echo "Mostrando procesos con ps:"
         ps aux
 
-    elif [[ "$comando" == "top" ]]; then
+    elif [[ "$com" == "top" ]]; then
         echo "Mostrando procesos con top en modo batch:"
         top -b -n 1
 
-    elif [[ "$comando" == "pgrep" ]]; then
+    elif [[ "$com" == "pgrep" ]]; then
         echo "Ingrese el nombre del proceso a buscar:"
         read nombre
         pgrep -l "$nombre"
 
-    elif [[ "$comando" == "kill" ]]; then
+    elif [[ "$com" == "kill" ]]; then
         echo "Ingrese el PID del proceso a finalizar:"
         read pid
 
-        # Validar que el PID sea un número
         if [[ $pid =~ ^[0-9]+$ ]]; then
             kill "$pid" && echo "Proceso $pid finalizado."
         else
@@ -76,74 +66,5 @@ function ejecutar_comandos(){
     else
         echo "Comando no reconocido. Por favor, ingrese: ps, top, pgrep o kill."
     fi
-}
-
-# Función 5: Crear un archivo y elegir su extensión
-function crear_archivo() {
-
-    echo "Ingrese el nombre del archivo sin su extensión:"
-    read nombre_archivo
-
-    if [[ -z "$nombre_archivo" || ${#nombre_archivo} -lt 3 ]]; then 
-        echo "El nombre del archivo no puede estar vacío ni tener menos de 3 letras."
-        return
-    else 
-        echo "Nombre del archivo guardado correctamente: $nombre_archivo"
-    fi
-
-    echo "Ingrese la extensión del archivo (Por ej: sh, txt, py, etc):"
-    read extension_archivo 
-
-    if [[ -z "$extension_archivo" || ${#extension_archivo} -lt 2 ]]; then 
-        echo "La extensión no puede estar vacía y debe tener al menos 2 caracteres."
-        return
-    else 
-        echo "La extensión del archivo se guardó correctamente: $extension_archivo"
-    fi
-
-    archivo = "${nombre_archivo}.${extension_archivo}"
-
-       if [[ -e "$archivo" ]]; then
-        echo "El archivo '$archivo' ya existe. No se creó uno nuevo."
-    else
-        touch "$archivo"
-        echo "Archivo '$archivo' creado exitosamente."
-    fi
-}
-
-#Función 6: Crear un directorio y elegir su nombre
-function crear_directorio() {
-    while true; do
-        echo "Ingrese el nombre del directorio:"
-        read nombre_directorio
-
-        # Eliminar espacios al principio y al final
-        nombre_directorio="${nombre_directorio#"${nombre_directorio%%[![:space:]]*}"}" 
-        nombre_directorio="${nombre_directorio%"${nombre_directorio##*[![:space:]]}"}" 
-
-        # Validación: el nombre no puede estar vacío o ser menor de 3 caracteres
-        if [[ -z "$nombre_directorio" || ${#nombre_directorio} -lt 3 ]]; then 
-            echo -e "\033[33mEl nombre del directorio no puede estar vacío ni tener menos de 3 letras. Por favor, elija otro nombre.\033[0m"
-            continue
-        fi
-       
-        # Validación: el nombre solo puede contener letras, números, guiones y guiones bajos
-        if [[ "$nombre_directorio" =~ [^a-zA-Z0-9_-] ]]; then
-            echo -e "\033[33mEl nombre del directorio solo puede contener letras, números, guiones y guiones bajos. Por favor, elija otro nombre.\033[0m"
-            continue  
-        fi
-        
-        # Validación: si el directorio ya existe
-        if [[ -e "$nombre_directorio" ]]; then
-            echo -e "\033[31mEl directorio '$nombre_directorio' ya existe. No se creó uno nuevo.\033[0m"
-            return 
-        fi
-        
-        # Si pasa todas las validaciones, se crea el directorio
-        echo "Nombre del directorio guardado correctamente: $nombre_directorio"
-        mkdir "$nombre_directorio"
-        echo -e "\033[32mDirectorio '$nombre_directorio' creado exitosamente.\033[0m"
-        break
-    done
 }
 

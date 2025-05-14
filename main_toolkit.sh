@@ -1,9 +1,10 @@
 #!/bin/bash
 
 source "$(dirname "$0")/procesos.sh"
+source "$(dirname "$0")/archivos.sh"
 
 if [[ $? -ne 0 ]]; then
-  echo "Error al importar procesos.sh"
+  echo "Error al importar archivos auxiliares"
   exit 1
 fi
 
@@ -11,15 +12,21 @@ while true; do
   echo ""
   echo "====== Toolkit de Terminal ======"
   select opt in \
-    "Función 1: funcion1" \
-    "Función 2: funcion2" \
-    "Función 3: funcion3" \
+    "PROCESOS: Función 1" \
+    "PROCESOS: Información de un proceso" \
+    "PROCESOS: Finalizar un proceso" \
+    "PROCESOS: Comandos habituales (ps, top, pgrep, kill)" \
+    "ARCHIVOS: Crear un archivo" \
+    "ARCHIVOS: Crear un directorio" \
     "Salir"; do
     case $REPLY in
       1) funcion1; break ;;
-      2) funcion2; break ;;
-      3) funcion3; break ;;
-      4) echo "Saliendo..."; exit 0 ;;
+      2) proceso_informacion; break ;;
+      3) proceso_finalizar; break ;;
+      4) procesos_comandos_habituales; break ;;
+      5) archivos_crear; break ;;
+      6) archivos_crear_directorio; break ;;
+      7) echo "Saliendo..."; exit 0 ;;
       *) echo "Opción inválida"; break ;;
     esac
   done
