@@ -126,7 +126,7 @@ mkdir <nombre_directorio>
     
 -   **Permisos**  de ejecución en el directorio de trabajo.
  
-###  **Pasos:**
+##  **Pasos:**
 
 1. **Clonar el repositorio**  
 ```bash
@@ -151,8 +151,11 @@ chmod +x main_toolkit.sh procesos.sh archivos.sh
 
 ### 📂 Estructura del Proyecto
 toolkit/
+
 ├── main_toolkit.sh      # Script principal
+
 ├── bprocesos.sh            # Funciones para gestión de procesos
+
 └── archivos.sh             # Funciones para archivos y directorios
 ## </> Comandos de Linux Utilizados
 
