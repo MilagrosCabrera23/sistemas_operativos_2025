@@ -128,12 +128,12 @@ mkdir <nombre_directorio>
 
 ###  **Requisitos Previos:**
 
--**Git** instalado (para clonar el repositorio):  
+- **Git** instalado (para clonar el repositorio):  
   ```bash
   git --version
   ``` 
--****Bash** (shell de Linux/Unix) disponible: 
-  ```bash
+- **Bash** (shell de Linux/Unix) disponible: 
+```bash
   bash --version
  ```
 -   **Sistema operativo**  tipo Unix/Linux.
