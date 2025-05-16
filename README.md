@@ -25,9 +25,25 @@ Este módulo inicial incluye:
 
 1.  **Ver procesos activos:**
 
--  Esta función muestra los procesos actuales en ejecución.
+-  Esta función lista los procesos actualmente en ejecución, mostrando los 30 que más CPU consumen.
+Utiliza el siguiente comando para presentar la información en columnas organizadas:
 
-  
+```bash
+ps -eo pid,user,%cpu,%mem,comm --sort=-%cpu | head -n 30
+```
+Se muestra:
+
+- PID del proceso
+
+- Usuario que lo ejecuta
+
+- Porcentaje de uso de CPU
+
+- Porcentaje de uso de memoria
+
+- Comando que originó el proceso
+
+Este resumen facilita identificar rápidamente procesos pesados o inusuales.  
 
 2.  **Consultar información detallada de un proceso:**
 
