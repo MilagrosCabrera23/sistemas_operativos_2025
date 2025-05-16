@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Función 1
-funcion1() {
-    # EVE
-    echo "Función 1 procesos en ejecución: Por implementar"
+mostrar_procesos() {
+    echo -e "PID\tUSER\t%CPU\t%MEM\tCOMMAND"
+ps -eo pid,user,%cpu,%mem,comm --sort=-%cpu | head -n 30
 }
 
 proceso_informacion() {
