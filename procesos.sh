@@ -1,9 +1,7 @@
 #!/bin/bash
 
-# Función 1
-mostrar_procesos() {
-    echo -e "PID\tUSER\t%CPU\t%MEM\tCOMMAND"
-ps -eo pid,user,%cpu,%mem,comm --sort=-%cpu | head -n 30
+proceso_mostrar() {
+    ps -eo pid,user,%cpu,%mem,comm --sort=-%cpu | head -n 30
 }
 
 proceso_informacion() {

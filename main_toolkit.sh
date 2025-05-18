@@ -12,7 +12,7 @@ while true; do
   echo ""
   echo "====== Toolkit de Terminal ======"
   select opt in \
-    "PROCESOS: Función 1" \
+    "PROCESOS: Mostrar procesos en ejecución" \
     "PROCESOS: Información de un proceso" \
     "PROCESOS: Finalizar un proceso" \
     "PROCESOS: Comandos habituales (ps, top, pgrep, kill)" \
@@ -20,7 +20,7 @@ while true; do
     "ARCHIVOS: Crear un directorio" \
     "Salir"; do
     case $REPLY in
-      1) funcion1; break ;;
+      1) proceso_mostrar; break ;;
       2) proceso_informacion; break ;;
       3) proceso_finalizar; break ;;
       4) procesos_comandos_habituales; break ;;
