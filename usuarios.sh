@@ -1,6 +1,6 @@
 #!/bin/bash
 
-listar_usuarios() {
+usuarios_listar() {
     echo -e "\n\033[1;34m Usuarios del sistema (UID < 1000) \033[0m"
     if command -v getent >/dev/null 2>&1; then
         getent passwd | awk -F: '$3 < 1000 {print $1}' | sort | column
@@ -26,7 +26,7 @@ listar_usuarios() {
     fi
 }
 
-listar_grupos() {
+usuarios_grupos_listar() {
     echo -e "\n\033[1;34m Grupos del sistema (GID < 1000) \033[0m"
     if command -v getent >/dev/null 2>&1; then
         getent group | awk -F: '$3 < 1000 {print $1}' | sort | column
@@ -52,6 +52,3 @@ listar_grupos() {
     fi
 }
 
-# Ejecutar funciones
-listar_usuarios
-listar_grupos

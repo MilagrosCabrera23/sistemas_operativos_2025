@@ -62,3 +62,23 @@ archivos_crear_directorio() {
     done
 }
 
+archivos_listar(){
+    while true; do
+        echo "Ingrese el directorio que desea listar:"
+        read dir
+
+        if [ -z "$dir" ]; then
+        echo " Directorio no valido, por favor ingrese nuevamente el directorio"
+        continue
+        fi 
+
+        if [ -d "$dir" ]; then
+        echo " Listando archivos del directorio $dir:"
+        ls -l "$dir"
+        break
+
+        else
+        echo " El directorio $dir no existe"
+        fi
+    done
+}

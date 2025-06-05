@@ -21,18 +21,14 @@ disco_comandos_habituales(){
             ;;
     esac
 }
-# Muestre el espacio libre y utilizado en los sistemas de archivos montados.
 
-mostrar_espacio_disco (){
+disco_mostrar_espacio_libre (){
     echo " espacio libre y utilizado"
-      df-h
+      df -h
 }
 
-#Permita al usuario ingresar una ruta y muestre el tamaño ocupado por ese
-#directorio/archivo (du -sh <ruta>).
-
-mostrar_tamano_ruta(){
-    read -p "Ingrese por favor la ruta del archivo o directorio:" ruta
+disco_mostrar_tamano_ruta(){
+    read -p "Ingrese por favor la ruta del archivo o directorio: " ruta
 
     if [-e "$ruta"];then
     du -sh "$ruta"
@@ -42,24 +38,4 @@ mostrar_tamano_ruta(){
 
     fi
 }
-listar_archivos(){
-    while true; do
-    echo "Ingrese el directorio que desea listar:"
-    read dir
 
-    if [ -z "$dir" ]; then
-    echo " Directorio no valido, por favor ingrese nuevamente el directorio"
-    continue
-    fi 
-
-    if [ -d "$dir" ]; then
-    echo " Listando archivos del directorio $dir:"
-    ls -l "$dir"
-    break
-
-    else
-    echo " El directorio $dir no existe"
-    fi
-
-    done
-}

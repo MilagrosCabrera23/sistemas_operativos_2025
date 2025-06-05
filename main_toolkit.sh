@@ -2,6 +2,9 @@
 
 source "$(dirname "$0")/procesos.sh"
 source "$(dirname "$0")/archivos.sh"
+source "$(dirname "$0")/disco.sh"
+source "$(dirname "$0")/usuarios.sh"
+source "$(dirname "$0")/memoria.sh"
 
 if [[ $? -ne 0 ]]; then
   echo "Error al importar archivos auxiliares"
@@ -18,6 +21,13 @@ while true; do
     "PROCESOS: Comandos habituales (ps, top, pgrep, kill)" \
     "ARCHIVOS: Crear un archivo" \
     "ARCHIVOS: Crear un directorio" \
+    "ARCHIVOS: Listar archivos en un directorio" \
+    "DISCO: Mostrar espacio libre y utilizado" \
+    "DISCO: Mostrar el tamaño ocupado por un directorio/archivo" \
+    "DISCO: Comandos habituales (df, du, ls)" \
+    "USUARIOS: Mostrar usuarios del sistema" \
+    "USUARIOS: Mostrar grupos del sistema" \
+    "MEMORIA: Diagnóstico rápido de Memoria" \
     "Salir"; do
     case $REPLY in
       1) proceso_mostrar; break ;;
@@ -26,7 +36,14 @@ while true; do
       4) procesos_comandos_habituales; break ;;
       5) archivos_crear; break ;;
       6) archivos_crear_directorio; break ;;
-      7) echo "Saliendo..."; exit 0 ;;
+      7) archivos_listar; break ;;
+      8) disco_mostrar_espacio_libre; break ;;
+      9) disco_mostrar_tamano_ruta; break ;;
+      10) disco_comandos_habituales; break ;;
+      11) usuarios_listar; break ;;
+      12) usuarios_grupos_listar; break ;;
+      13) diagnostico_memoria; break ;;
+      14) echo "Saliendo..."; exit 0 ;;
       *) echo "Opción inválida"; break ;;
     esac
   done
