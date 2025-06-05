@@ -1,12 +1,32 @@
 #!/bin/bash
+disco_comandos_habituales(){
+    echo "Seleccione un comando para ejecutar: df, du, ls"
+    read comando
 
+    case $comando in
+        df)
+            echo "Mostrando uso del disco:"
+            df -h 
+            ;;
+        du)
+            echo "Mostrando el uso del espacio por carpeta:"
+            du -sh *
+            ;;
+        ls)
+            echo "Listando archivos:"
+            ls -lh
+            ;;
+        *)
+            echo "Comando no reconocido. Usa df, du o ls."
+            ;;
+    esac
+}
 # Muestre el espacio libre y utilizado en los sistemas de archivos montados.
 
 mostrar_espacio_disco (){
     echo " espacio libre y utilizado"
       df-h
 }
-
 
 #Permita al usuario ingresar una ruta y muestre el tamaño ocupado por ese
 #directorio/archivo (du -sh <ruta>).
@@ -21,5 +41,4 @@ mostrar_tamano_ruta(){
     echo "la ruta indicada no existe"
 
     fi
-
 }
