@@ -27,4 +27,3 @@ case $comando in
 esac
 }
 
-disco_comandos_habituales()
