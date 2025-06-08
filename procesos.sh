@@ -1,5 +1,3 @@
-#!/bin/bash
-
 proceso_mostrar() {
     ps -eo pid,user,%cpu,%mem,comm --sort=-%cpu | head -n 30
 }
@@ -32,7 +30,7 @@ proceso_finalizar() {
     fi
 }
 
-procesos_comandos_habituales(){
+proceso_comandos_habituales(){
    echo "Seleccione una opción: (ps, top, pgrep, kill)"
     read com
 

@@ -1,12 +1,10 @@
-#!/bin/bash
-
-verificar_logs(){
+seguridad_verificar_logs(){
     while true; do
      echo "Seleccione una opción:"
     echo "1) Ver últimas 15 líneas de /var/log/auth.log"
     echo "2) Buscar errores de autenticación con 'Failed' en /var/log/auth.log"
     echo "3) Ver errores recientes del sistema (journalctl)"
-    echo "4) Ver logs de SSH en las últimas dos hora (journalctl)"
+    echo "4) Ver logs de SSH en las últimas dos horas (journalctl)"
     echo "5) Salir"
 
     read opcion 
@@ -34,11 +32,11 @@ done
 }
 
 seguridad_comandos_habituales(){
-      echo "Seleccione una opción: (last, lastb, ls -l, grep, journalctl)"
+    echo "Seleccione una opción: (last, lastb, ls -l, grep, journalctl)"
     read com
 
     com=$(echo "$com" | tr '[:upper:]' '[:lower:]')
-      if [[ "$com" == "last" ]]; then
+    if [[ "$com" == "last" ]]; then
         echo "Mostrando las sesiones exitosas:"
         last
 

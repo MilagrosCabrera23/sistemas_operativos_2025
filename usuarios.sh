@@ -1,5 +1,3 @@
-#!/bin/bash
-
 usuarios_listar() {
     echo -e "\n\033[1;34m Usuarios del sistema (UID < 1000) \033[0m"
     if command -v getent >/dev/null 2>&1; then

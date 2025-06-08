@@ -5,6 +5,7 @@ source "$(dirname "$0")/archivos.sh"
 source "$(dirname "$0")/disco.sh"
 source "$(dirname "$0")/usuarios.sh"
 source "$(dirname "$0")/memoria.sh"
+source "$(dirname "$0")/seguridad.sh"
 
 if [[ $? -ne 0 ]]; then
   echo "Error al importar archivos auxiliares"
@@ -28,12 +29,14 @@ while true; do
     "USUARIOS: Mostrar usuarios del sistema" \
     "USUARIOS: Mostrar grupos del sistema" \
     "MEMORIA: Diagnóstico rápido de Memoria" \
+    "SEGURIDAD: Verificar logs del sistema" \
+    "SEGURIDAD: Comandos habituales (last, lastb, ls -l, grep, journalctl)" \
     "Salir"; do
     case $REPLY in
       1) proceso_mostrar; break ;;
       2) proceso_informacion; break ;;
       3) proceso_finalizar; break ;;
-      4) procesos_comandos_habituales; break ;;
+      4) proceso_comandos_habituales; break ;;
       5) archivos_crear; break ;;
       6) archivos_crear_directorio; break ;;
       7) archivos_listar; break ;;
@@ -43,7 +46,9 @@ while true; do
       11) usuarios_listar; break ;;
       12) usuarios_grupos_listar; break ;;
       13) diagnostico_memoria; break ;;
-      14) echo "Saliendo..."; exit 0 ;;
+      14) seguridad_verificar_logs; break ;;
+      15) seguridad_comandos_habituales; break ;;
+      16) echo "Saliendo..."; exit 0 ;;
       *) echo "Opción inválida"; break ;;
     esac
   done

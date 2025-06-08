@@ -1,4 +1,3 @@
-#!/bin/bash
 disco_comandos_habituales(){
     echo "Seleccione un comando para ejecutar: df, du, ls"
     read comando
