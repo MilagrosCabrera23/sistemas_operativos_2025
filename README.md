@@ -115,32 +115,19 @@ du -sh <ruta>
 * Lista grupos de sistema (GID < 1000) y grupos normales (GID >= 1000), usando `getent` o `/etc/group`.
 
 ---
+### Diagnóstico de Memoria
 
-### Diagnóstico de Memoria y Sistema de Archivos
+1. **Diagnóstico rápido de memoria (script: `memoria.sh`):**
 
-1. **Diagnóstico de memoria (script: `diagnostico_memoria.sh`):**
+   * Realiza un análisis del uso de **memoria RAM y SWAP**, estadísticas del sistema y muestra los procesos que consumen más memoria.
 
-* Realiza un análisis exclusivo de uso de **memoria RAM y SWAP**, estadísticas del sistema, y procesos que consumen más memoria.
+   * Comandos utilizados:
+     * `free -h` → Estado de la RAM y SWAP.
+     * `vmstat -s` → Estadísticas de memoria (buffers, caché, total y libre).
+     * `head /proc/meminfo` → Información detallada del sistema.
+     * `ps` → Lista de los procesos que más memoria consumen.
 
-* Comandos utilizados:
-
-  * `free -h` → Estado de la RAM y SWAP.
-  * `vmstat -s` → Estadísticas de memoria (buffers, caché, total y libre).
-  * `head /proc/meminfo` → Información detallada del sistema.
-  * `ps` → Lista de procesos ordenados por uso de memoria.
-
-* Ideal si solo se necesita monitoreo de memoria del sistema.
-
-2. **Diagnóstico combinado (script: `memoria.sh`):**
-
-* Amplía el diagnóstico anterior incluyendo también el **estado del sistema de archivos**.
-
-* Incluye todos los comandos anteriores **más**:
-
-  * `df -h` → Uso de disco por sistema de archivos.
-
-* Integra en un solo paso el monitoreo de **memoria y almacenamiento**, útil para diagnósticos más completos.
-
+   * Ideal para monitoreo rápido de recursos de memoria en el sistema.
 ---
 
 ### Análisis de Seguridad (logs)
@@ -226,8 +213,7 @@ toolkit/
 ├── main_toolkit.sh          # Script principal  
 ├── procesos.sh              # Funciones para gestión de procesos  
 ├── archivos.sh              # Funciones para archivos y directorios  
-├── disco.sh                 # Funciones y utilidades de disco          
-├── diagnostico_memoria.sh   # Diagnóstico exclusivo de memoria  
+├── disco.sh                 # Funciones y utilidades de disco    
 ├── usuarios.sh              # Gestión de usuarios y grupos  
 ├── memoria.sh               # Diagnóstico rápido de memoria y estado del sistema de archivos   
 └── seguridad.sh             # Comandos y revisión básica de seguridad (opcional)
@@ -256,8 +242,6 @@ toolkit/
 * `head`
 
 ---
-
-## Estado de la Evidencia 3
 
 ### Implementado en esta entrega:
 
