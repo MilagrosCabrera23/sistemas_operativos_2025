@@ -187,7 +187,7 @@ cd sistemas_operativos_2025
 3. **Dar permisos de ejecución**
 
 ```bash
-chmod +x main_toolkit.sh procesos.sh archivos.sh disco.sh usuarios.sh memoria.sh diagnostico_memoria.sh seguridad.sh
+chmod +x main_toolkit.sh procesos.sh archivos.sh disco.sh usuarios.sh memoria.sh seguridad.sh
 ```
 
 4. **Ejecutar el Toolkit**
