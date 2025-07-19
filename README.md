@@ -1,13 +1,11 @@
 
-# Toolkit Administrativo - Sistemas Operativos (Evidencia 3)
+# Toolkit Administrativo - Sistemas Oerativos 
 
 Este proyecto es un conjunto de scripts Bash que conforman un _toolkit administrativo básico_ para sistemas operativos tipo Unix/Linux. Está diseñado para facilitar tareas habituales de gestión del sistema, monitoreo, seguridad, y administración de usuarios mediante una interfaz interactiva y amigable desde terminal.
 
 ---
 
 ## Contenido Actual del Toolkit
-
-Este módulo inicial incluye:
 
 ### Gestión de Procesos
 
@@ -243,27 +241,5 @@ toolkit/
 
 ---
 
-### Implementado en esta entrega:
 
-* Monitoreo de procesos (`ps aux`, `top`).
-
-* Consulta detallada de procesos por PID.
-
-* Finalización de procesos con SIGTERM y confirmación.
-
-* Creación de directorios con validación de nombre.
-
-* Creación de archivos con nombre y extensión separados.
-
-* Listado de archivos y directorios.
-
-* Diagnóstico rápido de memoria (RAM, SWAP, procesos, `/proc/meminfo`).
-
-* Comandos y monitoreo de disco (`df`, `du`, `ls`).
-
-* Listado de usuarios y grupos del sistema.
-
-* Revisión básica de logs de seguridad y sesiones (`auth.log`, `journalctl`, `last`, `lastb`).
-
----
 
